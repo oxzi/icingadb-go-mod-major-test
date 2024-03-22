@@ -10,11 +10,9 @@ UPDATE_MSG=""
 # check_updates DIR check if any major updates are within DIR.
 # Found updates are being added to UPDATE_MSG
 check_updates() {
-  cd "$1"
-  available_updates="$(gomajor list 2>&1 \
+  available_updates="$(gomajor list -major -dir "$1" 2>&1 \
     | grep -v "no module versions found" \
     | awk '{ print NR ". `" $0 "`" }')"
-  cd - > /dev/null
 
   if [ -z "$available_updates" ]; then
     echo "Nothing to do in $1"
