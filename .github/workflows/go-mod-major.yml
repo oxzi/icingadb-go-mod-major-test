@@ -21,7 +21,7 @@ jobs:
 
     - run: go install github.com/icholy/gomajor@latest
 
-    - run: ./.github/workflows/go-mod-major.sh "." "tests"
+    - run: .github/workflows/go-mod-major.sh "." "tests"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_REPO: ${{ github.repository }}
